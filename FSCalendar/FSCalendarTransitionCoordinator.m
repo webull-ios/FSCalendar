@@ -416,7 +416,20 @@
 
             NSDate *focusedDate = ({
                 NSArray<NSDate *> *candidates = ({
-                    NSMutableArray *dates = self.calendar.selectedDates.reverseObjectEnumerator.allObjects.mutableCopy;
+                    NSDate *startDate = nil;
+                    NSDate *endDate = nil;
+                    
+                    if (self.calendar.selectedDates.count > 0) {
+                        startDate = self.calendar.selectedDates.firstObject;
+                        endDate = self.calendar.selectedDates.lastObject;
+                    }
+                    
+                    NSMutableArray<NSDate*> * dates = [NSMutableArray array];
+                    
+                    if (startDate != nil && endDate != nil) {
+                        [dates addObject:startDate];
+                        [dates addObject:endDate];
+                    }
                     if (self.calendar.today) {
                         [dates addObject:self.calendar.today];
                     }
@@ -454,7 +467,20 @@
             
             NSDate *focusedDate = ({
                 NSArray<NSDate *> *candidates = ({
-                    NSMutableArray *dates = self.calendar.selectedDates.reverseObjectEnumerator.allObjects.mutableCopy;
+                    NSDate *startDate = nil;
+                    NSDate *endDate = nil;
+                    
+                    if (self.calendar.selectedDates.count > 0) {
+                        startDate = self.calendar.selectedDates.firstObject;
+                        endDate = self.calendar.selectedDates.lastObject;
+                    }
+                    
+                    NSMutableArray<NSDate*> * dates = [NSMutableArray array];
+                    
+                    if (startDate != nil && endDate != nil) {
+                        [dates addObject:startDate];
+                        [dates addObject:endDate];
+                    }
                     if (self.calendar.today) {
                         [dates addObject:self.calendar.today];
                     }
